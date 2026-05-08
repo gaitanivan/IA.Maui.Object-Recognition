@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="com.gaitanivan.maui.poryiaa.MainPage"
+			 Appearing="ContentPage_Appearing"
+			 Disappearing="ContentPage_Disappearing"
+			 Title="Detección de Objeto">
+
+	<Grid
+		RowSpacing="10"
+		Padding="10"
+		ColumnDefinitions="Auto,*">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="{Binding HasManyCameras_Row}" />
+			<RowDefinition Height="{Binding HasResolutions_Row}" />
+		</Grid.RowDefinitions>
+		<toolkit:CameraView
+			x:Name="CameraViewer"
+			Grid.ColumnSpan="2"
+			SelectedCamera="{Binding SelectedCamera}"
+            ImageCaptureResolution="{Binding SelectedResolution}"/>
+
+		<Image x:Name="MyDisplayImage"
+			Grid.ColumnSpan="2"
+			Aspect="AspectFit"
+			HorizontalOptions="Fill"
+			VerticalOptions="Fill"/>
+
+		<Label
+			Grid.Row="1"
+			Text="Detectar: "
+			FontAttributes="Bold"
+			TextDecorations="Underline"
+			VerticalTextAlignment="Center"/>
+		<HorizontalStackLayout
+			Grid.Row="1"
+			Grid.Column="1"
+			HorizontalOptions="Start"
+			Spacing="4">
+			<Label
+				x:Name="lblUno"
+				Text="Uno"
+				VerticalTextAlignment="Center">
+				<Label.Triggers>
+					<DataTrigger
+						TargetType="Label"
+						Binding="{Binding Source={x:Reference MultiDetectionSwitch}, Path=IsToggled}"
+						Value="False">
+						<Setter Property="FontAttributes" Value="Bold" />
+					</DataTrigger>
+					<DataTrigger
+						TargetType="Label"
+						Binding="{Binding Source={x:Reference MultiDetectionSwitch}, Path=IsToggled}"
+						Value="True">
+						<Setter Property="TextDecorations" Value="Strikethrough" />
+					</DataTrigger>
+				</Label.Triggers>
+			</Label>
+			<Switch
+				x:Name="MultiDetectionSwitch"
+				OnColor="{StaticResource Primary}"
+				ThumbColor="{StaticResource Secondary}"
+				Toggled="MultiDetectionSwitch_Toggled"/>
+			<Label
+				x:Name="lblMuchos"
+				Text="Muchos"
+				VerticalTextAlignment="Center">
+				<Label.Triggers>
+					<DataTrigger
+						TargetType="Label"
+						Binding="{Binding Source={x:Reference MultiDetectionSwitch}, Path=IsToggled}"
+						Value="True">
+						<Setter Property="FontAttributes" Value="Bold" />
+					</DataTrigger>
+					<DataTrigger
+						TargetType="Label"
+						Binding="{Binding Source={x:Reference MultiDetectionSwitch}, Path=IsToggled}"
+						Value="False">
+						<Setter Property="TextDecorations" Value="Strikethrough" />
+					</DataTrigger>
+				</Label.Triggers>
+			</Label>
+		</HorizontalStackLayout>
+
+		<Label
+			Grid.Row="2"
+			Text="Cámara: "
+			FontAttributes="Bold"
+			TextDecorations="Underline"
+			VerticalTextAlignment="Center"/>
+		<HorizontalStackLayout
+			Grid.Row="2"
+			Grid.Column="1"
+			HorizontalOptions="Start">
+			<Picker
+				ItemsSource="{Binding AvailableCameras}"
+				ItemDisplayBinding="{Binding Name}"
+				SelectedItem="{Binding SelectedCamera}"/>
+		</HorizontalStackLayout>
+
+		<Label
+			Grid.Row="3"
+			Text="Resolución: "
+			FontAttributes="Bold"
+			TextDecorations="Underline"
+			VerticalTextAlignment="Center"/>
+		<HorizontalStackLayout
+			Grid.Row="3"
+			Grid.Column="1"
+			HorizontalOptions="Start">
+			<Picker
+				ItemsSource="{Binding SupportedResolutions}"
+				SelectedItem="{Binding SelectedResolution}"/>
+		</HorizontalStackLayout>
+	</Grid>
+</ContentPage>
