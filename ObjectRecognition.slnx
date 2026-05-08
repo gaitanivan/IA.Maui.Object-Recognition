@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="PORY IA-A\ObjectRecognition.csproj">
+  <Project Path="PORY IA-A/PORY IA-A.csproj">
     <Deploy Solution="Debug|*" />
   </Project>
 </Solution>
