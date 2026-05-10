@@ -15,8 +15,23 @@ Este proyecto nació como un reto técnico para integrar el potente motor de vis
 * **Detección en tiempo real:** Uso de la cámara para identificar objetos instantáneamente (cada segundo).
 * **Motor ONNX:** Inferencia local optimizada mediante `Microsoft.ML.OnnxRuntime`.
 * **Interfaz MAUI:** Diseño intuitivo y minimalista.
-* **Community Toolkit:** Utilizando el control CameraView para la visualización de lo capturado por la cámara en tienpo real. También para capturar la imagen a ser procesada.
+* **Community Toolkit:** Utilizando el control CameraView para la visualización de lo capturado por la cámara en tiempo real. También para capturar la imagen a ser procesada.
 * **Gráficos Dinámicos:** Dibujo de cajas delimitadoras (Bounding Boxes) mediante SkiaSharp.
+
+## 🧠 Inteligencia Artificial
+
+Esta aplicación utiliza **YOLO11** para el reconocimiento de objetos. El modelo ha sido optimizado para ejecutarse localmente en dispositivos móviles y escritorio.
+
+### Conversión y Optimización
+El proceso de transformación del modelo original al formato **ONNX** se realizó íntegramente en **Google Colab**. Esto permite una exportación limpia, aprovechando la aceleración por GPU y un entorno preconfigurado.
+
+Puedes consultar, ejecutar y estudiar el notebook con el paso a paso aquí:
+
+👉 **[YOLO11n_Export_to_ONNX.ipynb](./PORY%20IA-A/Scripts/YOLO11n_Export_to_ONNX.ipynb)**
+
+*   **Entorno:** Google Colab (Python 3.x) (Entorno de ejecución GPU T4).
+*   **Configuración:** Opset 17, Simplicación de grafo y resolución fija de 640px.
+*   **Nota:** El archivo `.onnx` resultante ya está integrado en `Resources/Raw/` para que la app funcione "out of the box".
 
 ## 🛠️ Tecnologías utilizadas
 * **Lenguaje:** C#
