@@ -9,3 +9,6 @@
 
 # MAUI específico
 Generated Files/
+
+# Ignorar carpeta de Publish
+[Pp]ublish/

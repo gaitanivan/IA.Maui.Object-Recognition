@@ -10,6 +10,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<MauiXamlInflator>SourceGen</MauiXamlInflator>
+		<!-- Asegura que use el runtime estándar de Windows y no Mono -->
+		<UseMonoRuntime>false</UseMonoRuntime>
 
 		<ApplicationTitle>PORY IA-A</ApplicationTitle>
 		<ApplicationId>com.gaitanivan.maui.pory_ia_a</ApplicationId>
@@ -25,9 +27,17 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-		<AssemblyName>PORYIA-A</AssemblyName>
+		<AssemblyName>PORY IA-A</AssemblyName>
 		<AssemblyVersion>2026.5.7.1</AssemblyVersion>
 		<FileVersion>2026.5.7.1</FileVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-android|AnyCPU'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-android|AnyCPU'">
+	  <AndroidKeyStore>False</AndroidKeyStore>
 	</PropertyGroup>
 
 	<ItemGroup>
